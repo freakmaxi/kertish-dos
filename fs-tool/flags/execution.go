@@ -7,7 +7,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
 )
 
 type Execution interface {

@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
-	"github.com/freakmaxi/kertish-dfs/fs-tool/dfs"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/fs-tool/dos"
 	"github.com/google/uuid"
 )
 
@@ -91,9 +91,9 @@ func (c *copyCommand) Parse() error {
 
 func (c *copyCommand) PrintUsage() {
 	c.output.Println("  cp          Copy file or folder.")
-	c.output.Println("              Ex: cp [arguments] [source] [target]          # Copy in dfs")
-	c.output.Println("              Ex: cp [arguments] local:[source] [target]    # Copy from local to dfs")
-	c.output.Println("              Ex: cp [arguments] [source] local:[target]    # Copy from dfs to local")
+	c.output.Println("              Ex: cp [arguments] [source] [target]          # Copy in dos")
+	c.output.Println("              Ex: cp [arguments] local:[source] [target]    # Copy from local to dos")
+	c.output.Println("              Ex: cp [arguments] [source] local:[target]    # Copy from dos to local")
 	c.output.Println("")
 	c.output.Println("arguments:")
 	c.output.Println("  -f          overwrites the existent file / folder")
@@ -101,7 +101,7 @@ func (c *copyCommand) PrintUsage() {
 	c.output.Println("  -r value    copies only defined range of the file.")
 	c.output.Println("              Ex: cp -r [byteBegins]->[byteEnds] [source] local:[target]")
 	c.output.Println("")
-	c.output.Println("              WARNING: range works only from dfs to local copy operations")
+	c.output.Println("              WARNING: range works only from dos to local copy operations")
 	c.output.Println("")
 	c.output.Refresh()
 }
@@ -150,7 +150,7 @@ func (c *copyCommand) Execute() error {
 		c.target = common.Join(c.basePath, c.target)
 	}
 
-	if err := dfs.Change(c.headAddresses, c.sources, c.target, c.overwrite, true); err != nil {
+	if err := dos.Change(c.headAddresses, c.sources, c.target, c.overwrite, true); err != nil {
 		anim.Cancel()
 		return err
 	}
@@ -224,7 +224,7 @@ func (c *copyCommand) remoteToLocal() error {
 		}
 	}
 
-	if err := dfs.Pull(c.headAddresses, c.sources, c.target, c.readRange); err != nil {
+	if err := dos.Pull(c.headAddresses, c.sources, c.target, c.readRange); err != nil {
 		anim.Cancel()
 		return err
 	}
@@ -267,7 +267,7 @@ func (c *copyCommand) localToRemote() error {
 		c.target = common.Join(c.basePath, c.target)
 	}
 
-	if err := dfs.Put(c.headAddresses, sourceTemp, c.target, c.overwrite); err != nil {
+	if err := dos.Put(c.headAddresses, sourceTemp, c.target, c.overwrite); err != nil {
 		anim.Cancel()
 		return fmt.Errorf(err.Error())
 	}

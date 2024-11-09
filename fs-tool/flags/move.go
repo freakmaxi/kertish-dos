@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
-	"github.com/freakmaxi/kertish-dfs/fs-tool/dfs"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/fs-tool/dos"
 	"github.com/google/uuid"
 )
 
@@ -78,9 +78,9 @@ func (m *moveCommand) Parse() error {
 
 func (m *moveCommand) PrintUsage() {
 	m.output.Println("  mv          Move file or folder.")
-	m.output.Println("              Ex: mv [arguments] [source] [target]          # Move in dfs")
-	m.output.Println("              Ex: mv [arguments] local:[source] [target]    # Move from local to dfs")
-	m.output.Println("              Ex: mv [arguments] [source] local:[target]    # Move from dfs to local")
+	m.output.Println("              Ex: mv [arguments] [source] [target]          # Move in dos")
+	m.output.Println("              Ex: mv [arguments] local:[source] [target]    # Move from local to dos")
+	m.output.Println("              Ex: mv [arguments] [source] local:[target]    # Move from dos to local")
 	m.output.Println("")
 	m.output.Println("arguments:")
 	m.output.Println("  -f          overwrites the existent file / folder")
@@ -133,7 +133,7 @@ func (m *moveCommand) Execute() error {
 		m.target = common.Join(m.basePath, m.target)
 	}
 
-	if err := dfs.Change(m.headAddresses, m.sources, m.target, m.overwrite, false); err != nil {
+	if err := dos.Change(m.headAddresses, m.sources, m.target, m.overwrite, false); err != nil {
 		anim.Cancel()
 		return err
 	}
@@ -207,13 +207,13 @@ func (m *moveCommand) remoteToLocal() error {
 		}
 	}
 
-	if err := dfs.Pull(m.headAddresses, m.sources, m.target, nil); err != nil {
+	if err := dos.Pull(m.headAddresses, m.sources, m.target, nil); err != nil {
 		anim.Cancel()
 		return err
 	}
 
 	for _, source := range m.sources {
-		if err := dfs.Delete(m.headAddresses, source, false); err != nil {
+		if err := dos.Delete(m.headAddresses, source, false); err != nil {
 			anim.Cancel()
 			return err
 		}
@@ -257,7 +257,7 @@ func (m *moveCommand) localToRemote() error {
 		m.target = common.Join(m.basePath, m.target)
 	}
 
-	if err := dfs.Put(m.headAddresses, sourceTemp, m.target, m.overwrite); err != nil {
+	if err := dos.Put(m.headAddresses, sourceTemp, m.target, m.overwrite); err != nil {
 		anim.Cancel()
 		return fmt.Errorf(err.Error())
 	}

@@ -4,7 +4,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/common"
 )
 
 func (h *hook) Delete(folderPath string, hookIds []string) error {

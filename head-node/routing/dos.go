@@ -6,21 +6,21 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/head-node/manager"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/head-node/manager"
 	"go.uber.org/zap"
 )
 
-type dfsRouter struct {
-	dfs    manager.Dfs
+type dosRouter struct {
+	dos    manager.Dfs
 	logger *zap.Logger
 
 	definitions []*Definition
 }
 
-func NewDfsRouter(dfs manager.Dfs, logger *zap.Logger) Router {
-	pR := &dfsRouter{
-		dfs:         dfs,
+func NewDfsRouter(dos manager.Dfs, logger *zap.Logger) Router {
+	pR := &dosRouter{
+		dos:         dos,
 		logger:      logger,
 		definitions: make([]*Definition, 0),
 	}
@@ -29,21 +29,21 @@ func NewDfsRouter(dfs manager.Dfs, logger *zap.Logger) Router {
 	return pR
 }
 
-func (d *dfsRouter) setup() {
+func (d *dosRouter) setup() {
 	d.definitions =
 		append(d.definitions,
 			&Definition{
-				Path:    "/client/dfs",
+				Path:    "/client/dos",
 				Handler: d.manipulate,
 			},
 		)
 }
 
-func (d *dfsRouter) Get() []*Definition {
+func (d *dosRouter) Get() []*Definition {
 	return d.definitions
 }
 
-func (d *dfsRouter) manipulate(w http.ResponseWriter, r *http.Request) {
+func (d *dosRouter) manipulate(w http.ResponseWriter, r *http.Request) {
 	defer func() { _ = r.Body.Close() }()
 
 	switch r.Method {
@@ -60,7 +60,7 @@ func (d *dfsRouter) manipulate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (d *dfsRouter) validateApplyTo(applyTo string) bool {
+func (d *dosRouter) validateApplyTo(applyTo string) bool {
 	switch applyTo {
 	case "folder", "file":
 		return true
@@ -68,7 +68,7 @@ func (d *dfsRouter) validateApplyTo(applyTo string) bool {
 	return false
 }
 
-func (d *dfsRouter) describeXPath(xPath string) ([]string, string, error) {
+func (d *dosRouter) describeXPath(xPath string) ([]string, string, error) {
 	action := ""
 	commaIdx := strings.Index(xPath, ",")
 	if commaIdx == 1 {
@@ -101,4 +101,4 @@ func (d *dfsRouter) describeXPath(xPath string) ([]string, string, error) {
 	return paths, action, nil
 }
 
-var _ Router = &dfsRouter{}
+var _ Router = &dosRouter{}

@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/common"
 	"go.uber.org/zap"
 )
 

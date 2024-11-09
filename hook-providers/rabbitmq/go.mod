@@ -1,9 +1,9 @@
-module github.com/freakmaxi/kertish-dfs/hooks-providers/rabbitmq
+module github.com/freakmaxi/kertish-dos/hooks-providers/rabbitmq
 
 go 1.17
 
 require (
-	github.com/freakmaxi/kertish-dfs/basics v0.0.0-00010101000000-000000000000
+	github.com/freakmaxi/kertish-dos/basics v0.0.0-00010101000000-000000000000
 	github.com/streadway/amqp v1.0.0
 )
 
@@ -13,4 +13,4 @@ require (
 	go.uber.org/zap v1.16.0 // indirect
 )
 
-replace github.com/freakmaxi/kertish-dfs/basics => ../../basics
+replace github.com/freakmaxi/kertish-dos/basics => ../../basics

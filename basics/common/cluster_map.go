@@ -1,6 +1,6 @@
 package common
 
-// ClusterMap struct is to hold the Chunk information base on the cluster locations of the dfs farm
+// ClusterMap struct is to hold the Chunk information base on the cluster locations of the dos farm
 // this Chunk can be the whole File Chunk or the part of the File Chunk.
 // Id is the cluster id where the File Chunk is located
 // Address is the node address in the cluster that requester can reach and read the chunk

@@ -7,11 +7,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/data-node/cluster"
-	dnc "github.com/freakmaxi/kertish-dfs/data-node/common"
-	"github.com/freakmaxi/kertish-dfs/data-node/filesystem/block"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/data-node/cluster"
+	dnc "github.com/freakmaxi/kertish-dos/data-node/common"
+	"github.com/freakmaxi/kertish-dos/data-node/filesystem/block"
 	"go.uber.org/zap"
 )
 

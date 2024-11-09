@@ -10,7 +10,7 @@ services:
       - ./Volumes/mongodb:/data/db
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=dfs-test-123
+      - MONGO_INITDB_ROOT_PASSWORD=dos-test-123
     networks:
       static-network:
 
@@ -36,14 +36,14 @@ services:
       static-network:
         ipv4_address: 172.20.1.10
 
-  kdfsc1n1:
-    image: freakmaxi/kertish-dfs:data-dev
-    container_name: kdfsc1n1
+  kdosc1n1:
+    image: freakmaxi/kertish-dos:data-dev
+    container_name: kdosc1n1
     restart: always
     volumes:
-      - ./Volumes/kertish-dfs/c1n1/:/opt/
+      - ./Volumes/kertish-dos/c1n1/:/opt/
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
+      - MANAGER_ADDRESS=http://kdosmanager:9400
       - SIZE=1073741824
       - ROOT_PATH=/opt
       - CACHE_LIMIT=1073741824
@@ -51,14 +51,14 @@ services:
       static-network:
         ipv4_address: 172.20.1.20
 
-  kdfsc1n2:
-    image: freakmaxi/kertish-dfs:data-dev
-    container_name: kdfsc1n2
+  kdosc1n2:
+    image: freakmaxi/kertish-dos:data-dev
+    container_name: kdosc1n2
     restart: always
     volumes:
-      - ./Volumes/kertish-dfs/c1n2/:/opt/
+      - ./Volumes/kertish-dos/c1n2/:/opt/
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
+      - MANAGER_ADDRESS=http://kdosmanager:9400
       - SIZE=1073741824
       - ROOT_PATH=/opt
       - CACHE_LIMIT=1073741824
@@ -66,14 +66,14 @@ services:
       static-network:
         ipv4_address: 172.20.1.21
 
-  kdfsc2n1:
-    image: freakmaxi/kertish-dfs:data-dev
-    container_name: kdfsc2n1
+  kdosc2n1:
+    image: freakmaxi/kertish-dos:data-dev
+    container_name: kdosc2n1
     restart: always
     volumes:
-      - ./Volumes/kertish-dfs/c2n1/:/opt/
+      - ./Volumes/kertish-dos/c2n1/:/opt/
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
+      - MANAGER_ADDRESS=http://kdosmanager:9400
       - SIZE=1073741824
       - ROOT_PATH=/opt
       - CACHE_LIMIT=1073741824
@@ -81,14 +81,14 @@ services:
       static-network:
         ipv4_address: 172.20.1.30
 
-  kdfsc2n2:
-    image: freakmaxi/kertish-dfs:data-dev
-    container_name: kdfsc2n2
+  kdosc2n2:
+    image: freakmaxi/kertish-dos:data-dev
+    container_name: kdosc2n2
     restart: always
     volumes:
-      - ./Volumes/kertish-dfs/c2n2/:/opt/
+      - ./Volumes/kertish-dos/c2n2/:/opt/
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
+      - MANAGER_ADDRESS=http://kdosmanager:9400
       - SIZE=1073741824
       - ROOT_PATH=/opt
       - CACHE_LIMIT=1073741824
@@ -96,14 +96,14 @@ services:
       static-network:
         ipv4_address: 172.20.1.31
 
-  kdfsc3n1:
-    image: freakmaxi/kertish-dfs:data-dev
-    container_name: kdfsc3n1
+  kdosc3n1:
+    image: freakmaxi/kertish-dos:data-dev
+    container_name: kdosc3n1
     restart: always
     volumes:
-      - ./Volumes/kertish-dfs/c3n1/:/opt/
+      - ./Volumes/kertish-dos/c3n1/:/opt/
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
+      - MANAGER_ADDRESS=http://kdosmanager:9400
       - SIZE=1073741824
       - ROOT_PATH=/opt
       - CACHE_LIMIT=1073741824
@@ -111,14 +111,14 @@ services:
       static-network:
         ipv4_address: 172.20.1.40
 
-  kdfsc3n2:
-    image: freakmaxi/kertish-dfs:data-dev
-    container_name: kdfsc3n2
+  kdosc3n2:
+    image: freakmaxi/kertish-dos:data-dev
+    container_name: kdosc3n2
     restart: always
     volumes:
-      - ./Volumes/kertish-dfs/c3n2/:/opt/
+      - ./Volumes/kertish-dos/c3n2/:/opt/
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
+      - MANAGER_ADDRESS=http://kdosmanager:9400
       - SIZE=1073741824
       - ROOT_PATH=/opt
       - CACHE_LIMIT=1073741824
@@ -126,13 +126,13 @@ services:
       static-network:
         ipv4_address: 172.20.1.41
 
-  kdfsmanager:
-    image: freakmaxi/kertish-dfs:manager-dev
-    container_name: kdfsmanager
+  kdosmanager:
+    image: freakmaxi/kertish-dos:manager-dev
+    container_name: kdosmanager
     restart: always
     environment:
-      - MONGO_CONN=mongodb://root:dfs-test-123@mongodb:27017
-      - MONGO_DATABASE=dfs
+      - MONGO_CONN=mongodb://root:dos-test-123@mongodb:27017
+      - MONGO_DATABASE=dos
       - REDIS_CONN=redis:6379
       - LOCKING_CENTER=lockingcenter:22119
     ports:
@@ -144,14 +144,14 @@ services:
     networks:
       static-network:
 
-  kdfshead:
-    image: freakmaxi/kertish-dfs:head-dev
-    container_name: kdfshead
+  kdoshead:
+    image: freakmaxi/kertish-dos:head-dev
+    container_name: kdoshead
     restart: always
     environment:
-      - MANAGER_ADDRESS=http://kdfsmanager:9400
-      - MONGO_CONN=mongodb://root:dfs-test-123@mongodb:27017
-      - MONGO_DATABASE=dfs
+      - MANAGER_ADDRESS=http://kdosmanager:9400
+      - MONGO_CONN=mongodb://root:dos-test-123@mongodb:27017
+      - MONGO_DATABASE=dos
       - LOCKING_CENTER=lockingcenter:22119
     ports:
       - 4000:4000

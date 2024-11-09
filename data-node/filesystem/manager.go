@@ -5,7 +5,7 @@ import (
 	"path"
 	"sync"
 
-	"github.com/freakmaxi/kertish-dfs/data-node/filesystem/block"
+	"github.com/freakmaxi/kertish-dos/data-node/filesystem/block"
 	"go.uber.org/zap"
 )
 

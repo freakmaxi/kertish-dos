@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	cluster2 "github.com/freakmaxi/kertish-dfs/manager-node/cluster"
-	"github.com/freakmaxi/kertish-dfs/manager-node/data"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	cluster2 "github.com/freakmaxi/kertish-dos/manager-node/cluster"
+	"github.com/freakmaxi/kertish-dos/manager-node/data"
 	"go.uber.org/zap"
 )
 

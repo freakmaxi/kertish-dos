@@ -4,7 +4,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/freakmaxi/kertish-dfs/data-node/common"
+	"github.com/freakmaxi/kertish-dos/data-node/common"
 	"go.uber.org/zap"
 )
 

@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
 )
 
 type animation struct {

@@ -1,6 +1,6 @@
-# Kertish DFS Manager Node
+# Kertish DOS Manager Node
 
-Manager node is responsible to orchestrate Kertish-dfs farm.
+Manager node is responsible to orchestrate Kertish-dos farm.
 Default bind endpoint port is `:9400`
 
 Manager node keep the index of files in Redis dss and cluster information in mongo db. Locking-center will use to keep 
@@ -18,7 +18,7 @@ Data nodes will access the service using `http://127.0.0.1:9400/client/node`
 
 Cluster and Data node setup and information will be kept in Mongo DB.
 
-- `MONGO_DATABASE` (optional) : Mongo DB name. Default: `kertish-dfs`
+- `MONGO_DATABASE` (optional) : Mongo DB name. Default: `kertish-dos`
 
 - `MONGO_TRANSACTION` (optional) : Set `true` if you have a Mongo DB Cluster setup
 

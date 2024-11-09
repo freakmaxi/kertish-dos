@@ -1,9 +1,9 @@
-module github.com/freakmaxi/kertish-dfs/data-node
+module github.com/freakmaxi/kertish-dos/data-node
 
 go 1.17
 
 require (
-	github.com/freakmaxi/kertish-dfs/basics v0.0.0-00010101000000-000000000000
+	github.com/freakmaxi/kertish-dos/basics v0.0.0-00010101000000-000000000000
 	github.com/google/uuid v1.2.0
 	github.com/stretchr/testify v1.7.0
 	go.uber.org/zap v1.16.0
@@ -24,4 +24,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
 
-replace github.com/freakmaxi/kertish-dfs/basics => ../basics
+replace github.com/freakmaxi/kertish-dos/basics => ../basics

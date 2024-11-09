@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
-	"github.com/freakmaxi/kertish-dfs/fs-tool/dfs"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/fs-tool/dos"
 )
 
 type listCommand struct {
@@ -100,7 +100,7 @@ func (l *listCommand) Execute() error {
 	anim := common.NewAnimation(l.output, "processing...")
 	anim.Start()
 
-	folder, err := dfs.List(l.headAddresses, l.source, l.usage)
+	folder, err := dos.List(l.headAddresses, l.source, l.usage)
 	if err != nil {
 		anim.Cancel()
 		return err

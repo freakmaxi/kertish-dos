@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 )
 
-// File struct is to hold the actual file details in dfs cluster
+// File struct is to hold the actual file details in dos cluster
 type File struct {
 	Name     string     `json:"name"`
 	Mime     string     `json:"mime"`
@@ -92,7 +92,7 @@ func newFile(name string) *File {
 }
 
 // IngestDeletion ingest the deletion information to file struct to be able to
-// track the consistent deletion operation across the dfs clusters
+// track the consistent deletion operation across the dos clusters
 func (f *File) IngestDeletion(deletionResult DeletionResult) {
 	if len(deletionResult.Untouched) == 0 && len(deletionResult.Deleted) == 0 && len(deletionResult.Missing) == 0 {
 		return
@@ -149,7 +149,7 @@ func (f *File) IngestDeletion(deletionResult DeletionResult) {
 	f.Missing = append(f.Missing, chunks...)
 }
 
-// ZombieCheck checks if the file is zombie in the dfs clustes
+// ZombieCheck checks if the file is zombie in the dos clustes
 func (f *File) ZombieCheck() bool {
 	f.Zombie = f.Zombie || len(f.Chunks) == 0
 	return f.Zombie

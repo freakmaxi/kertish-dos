@@ -4,13 +4,13 @@ import (
 	"io"
 	"os"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
 	"go.uber.org/zap"
 )
 
-func (d *dfs) CreateFolder(folderPath string) error {
+func (d *dos) CreateFolder(folderPath string) error {
 	folderPath = common.CorrectPath(folderPath)
 
 	return d.metadata.SaveChain(folderPath, func(folder *common.Folder) (bool, error) {
@@ -21,7 +21,7 @@ func (d *dfs) CreateFolder(folderPath string) error {
 	})
 }
 
-func (d *dfs) CreateFile(path string, mime string, size uint64, overwrite bool, contentReader io.Reader) error {
+func (d *dos) CreateFile(path string, mime string, size uint64, overwrite bool, contentReader io.Reader) error {
 	path = common.CorrectPath(path) // It is required in here to eliminate wrong path format
 
 	folderPath, filename := common.Split(path)
@@ -99,7 +99,7 @@ func (d *dfs) CreateFile(path string, mime string, size uint64, overwrite bool, 
 	return err
 }
 
-func (d *dfs) update(folderPath string, file *common.File) error {
+func (d *dos) update(folderPath string, file *common.File) error {
 	parent, filename := common.Split(folderPath)
 
 	return d.metadata.SaveBlock([]string{parent}, func(folders map[string]*common.Folder) (bool, error) {

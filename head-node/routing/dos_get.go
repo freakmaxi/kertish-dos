@@ -8,20 +8,20 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/head-node/manager"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/head-node/manager"
 	"go.uber.org/zap"
 )
 
-func (d *dfsRouter) handleGet(w http.ResponseWriter, r *http.Request) {
+func (d *dosRouter) handleGet(w http.ResponseWriter, r *http.Request) {
 	requestedPaths, sourceAction, err := d.describeXPath(r.Header.Get("X-Path"))
 	if err != nil {
 		w.WriteHeader(422)
 		return
 	}
 
-	read, err := d.dfs.Read(requestedPaths, strings.Compare(sourceAction, "j") == 0)
+	read, err := d.dos.Read(requestedPaths, strings.Compare(sourceAction, "j") == 0)
 	if err != nil {
 		if err == os.ErrNotExist {
 			w.WriteHeader(404)
@@ -85,7 +85,7 @@ func (d *dfsRouter) handleGet(w http.ResponseWriter, r *http.Request) {
 		if calculateUsage {
 			folder.CalculateUsage(func(shadows common.FolderShadows) {
 				for _, shadow := range shadows {
-					shadow.Size, _ = d.dfs.Size(shadow.Full)
+					shadow.Size, _ = d.dos.Size(shadow.Full)
 				}
 			})
 		}
@@ -125,7 +125,7 @@ func (d *dfsRouter) handleGet(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (d *dfsRouter) prepareResponseHeaders(w http.ResponseWriter, file *common.File, download bool, partialRequest bool, requestRange string) (bool, int64, int64) {
+func (d *dosRouter) prepareResponseHeaders(w http.ResponseWriter, file *common.File, download bool, partialRequest bool, requestRange string) (bool, int64, int64) {
 	w.Header().Set("Content-Type", file.Mime)
 
 	begins, ends := int64(0), int64(file.Size)-1

@@ -68,7 +68,7 @@ type flagContainer struct {
 
 func (f *flagContainer) Define(v string) int {
 	if f.help {
-		fmt.Printf("Kertish-dfs Admin (v%s) usage: \n", v)
+		fmt.Printf("Kertish-dos Admin (v%s) usage: \n", v)
 		fmt.Println()
 
 		return 1
@@ -217,7 +217,7 @@ func (f *flagContainer) Define(v string) int {
 	}
 
 	if activeCount == 0 {
-		fmt.Printf("Kertish-dfs Admin (v%s) usage: \n", v)
+		fmt.Printf("Kertish-dos Admin (v%s) usage: \n", v)
 		fmt.Println()
 
 		return 1
@@ -233,7 +233,7 @@ func (f *flagContainer) Define(v string) int {
 }
 
 func defineFlags(v string) *flagContainer {
-	set := flag.NewFlagSet("dfs", flag.ContinueOnError)
+	set := flag.NewFlagSet("dos", flag.ContinueOnError)
 
 	var managerAddress string
 	set.StringVar(&managerAddress, `manager-address`, "localhost:9400", `(DEPRECATED) The end point of manager to work with.`)

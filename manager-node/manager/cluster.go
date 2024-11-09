@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	cluster2 "github.com/freakmaxi/kertish-dfs/manager-node/cluster"
-	"github.com/freakmaxi/kertish-dfs/manager-node/data"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	cluster2 "github.com/freakmaxi/kertish-dos/manager-node/cluster"
+	"github.com/freakmaxi/kertish-dos/manager-node/data"
 	"go.uber.org/zap"
 )
 
-// Cluster interface contains functions to handle the cluster administration in the dfs farm
+// Cluster interface contains functions to handle the cluster administration in the dos farm
 type Cluster interface {
 	Register(nodeAddresses []string) (*common.Cluster, error)
 	RegisterNodesTo(clusterId string, nodeAddresses []string) error
@@ -48,7 +48,7 @@ type cluster struct {
 	logger      *zap.Logger
 }
 
-// NewCluster creates the instance for cluster administration of the dfs farm
+// NewCluster creates the instance for cluster administration of the dos farm
 func NewCluster(clusters data.Clusters, index data.Index, synchronize Synchronize, logger *zap.Logger) (Cluster, error) {
 	return &cluster{
 		clusters:    clusters,
@@ -404,10 +404,12 @@ func (c *cluster) DeleteSnapshot(clusterId string, snapshotIndex uint64) error {
 	masterNode := cluster.Master()
 	dn, err := cluster2.NewDataNode(masterNode.Address)
 	if err != nil {
+		var _ = c.clusters.UpdateMaintain(cluster.Id, false, common.TopicNone)
 		return err
 	}
 
 	if !dn.SnapshotDelete(snapshotIndex) {
+		var _ = c.clusters.UpdateMaintain(cluster.Id, false, common.TopicNone)
 		return errors.ErrSnapshot
 	}
 

@@ -3,7 +3,7 @@ package manager
 import (
 	"io"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/common"
 )
 
 type ReadType int

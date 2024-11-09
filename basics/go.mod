@@ -1,4 +1,4 @@
-module github.com/freakmaxi/kertish-dfs/basics
+module github.com/freakmaxi/kertish-dos/basics
 
 go 1.17
 

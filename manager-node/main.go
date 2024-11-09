@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/logging"
-	"github.com/freakmaxi/kertish-dfs/manager-node/data"
-	"github.com/freakmaxi/kertish-dfs/manager-node/manager"
-	"github.com/freakmaxi/kertish-dfs/manager-node/routing"
-	"github.com/freakmaxi/kertish-dfs/manager-node/services"
+	"github.com/freakmaxi/kertish-dos/basics/logging"
+	"github.com/freakmaxi/kertish-dos/manager-node/data"
+	"github.com/freakmaxi/kertish-dos/manager-node/manager"
+	"github.com/freakmaxi/kertish-dos/manager-node/routing"
+	"github.com/freakmaxi/kertish-dos/manager-node/services"
 	"github.com/freakmaxi/locking-center-client-go/mutex"
 	"go.uber.org/zap"
 )
@@ -65,7 +65,7 @@ func main() {
 
 	mongoDb := os.Getenv("MONGO_DATABASE")
 	if len(mongoDb) == 0 {
-		mongoDb = "kertish-dfs"
+		mongoDb = "kertish-dos"
 	}
 	logger.Info(fmt.Sprintf("MONGO_DATABASE: %s", mongoDb))
 
@@ -177,8 +177,8 @@ func main() {
 
 func printWelcome(console bool) {
 	if !console {
-		fmt.Printf("Kertish DFS, version %s\n", version)
-		fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dfs\n")
+		fmt.Printf("Kertish DOS, version %s\n", version)
+		fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dos\n")
 		return
 	}
 
@@ -199,6 +199,6 @@ func printWelcome(console bool) {
 	fmt.Println("              \\\\O@@@@@@@@@@@@@@@@@@@@@O/`")
 	fmt.Println("                 `\\\\|O@@@@@@@@@0oo/:")
 	fmt.Println()
-	fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dfs\n")
+	fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dos\n")
 	fmt.Println()
 }

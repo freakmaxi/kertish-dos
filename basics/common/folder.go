@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
 )
 
-// Folder struct is to hold the virtual folder details associated in dfs cluster
+// Folder struct is to hold the virtual folder details associated in dos cluster
 type Folder struct {
 	Full     string        `json:"full"`
 	Name     string        `json:"name"`
@@ -138,7 +138,7 @@ func (f *Folder) Folder(name string) *string {
 	return nil
 }
 
-// File searches the File by name and returns the File struct that points the file in dfs cluster
+// File searches the File by name and returns the File struct that points the file in dos cluster
 func (f *Folder) File(name string) *File {
 	for _, sf := range f.Files {
 		if strings.Compare(sf.Name, name) == 0 {

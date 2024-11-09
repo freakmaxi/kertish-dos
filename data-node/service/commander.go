@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/data-node/cache"
-	"github.com/freakmaxi/kertish-dfs/data-node/cluster"
-	"github.com/freakmaxi/kertish-dfs/data-node/filesystem"
-	"github.com/freakmaxi/kertish-dfs/data-node/filesystem/block"
-	"github.com/freakmaxi/kertish-dfs/data-node/manager"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/data-node/cache"
+	"github.com/freakmaxi/kertish-dos/data-node/cluster"
+	"github.com/freakmaxi/kertish-dos/data-node/filesystem"
+	"github.com/freakmaxi/kertish-dos/data-node/filesystem/block"
+	"github.com/freakmaxi/kertish-dos/data-node/manager"
 	"go.uber.org/zap"
 )
 

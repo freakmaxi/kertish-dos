@@ -1,9 +1,9 @@
-module github.com/freakmaxi/kertish-dfs/manager-node
+module github.com/freakmaxi/kertish-dos/manager-node
 
 go 1.17
 
 require (
-	github.com/freakmaxi/kertish-dfs/basics v0.0.0-00010101000000-000000000000
+	github.com/freakmaxi/kertish-dos/basics v0.0.0-00010101000000-000000000000
 	github.com/freakmaxi/locking-center-client-go v0.2.1
 	github.com/google/uuid v1.2.0
 	github.com/gorilla/mux v1.8.0
@@ -37,4 +37,4 @@ require (
 	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543 // indirect
 )
 
-replace github.com/freakmaxi/kertish-dfs/basics => ../basics
+replace github.com/freakmaxi/kertish-dos/basics => ../basics

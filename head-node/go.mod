@@ -1,9 +1,9 @@
-module github.com/freakmaxi/kertish-dfs/head-node
+module github.com/freakmaxi/kertish-dos/head-node
 
 go 1.17
 
 require (
-	github.com/freakmaxi/kertish-dfs/basics v0.0.0-00010101000000-000000000000
+	github.com/freakmaxi/kertish-dos/basics v0.0.0-00010101000000-000000000000
 	github.com/freakmaxi/locking-center-client-go v0.2.1
 	github.com/gorilla/mux v1.8.0
 	go.mongodb.org/mongo-driver v1.5.2
@@ -34,4 +34,4 @@ require (
 	golang.org/x/text v0.3.5 // indirect
 )
 
-replace github.com/freakmaxi/kertish-dfs/basics => ../basics
+replace github.com/freakmaxi/kertish-dos/basics => ../basics

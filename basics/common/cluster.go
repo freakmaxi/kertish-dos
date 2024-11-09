@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 )
 
 const reservationDuration = time.Hour * 24 // 24 hours
@@ -34,7 +34,7 @@ const (
 	TopicRestoreSnapshot Topics = "Restore Snapshot"
 )
 
-// Cluster struct is to hold cluster details in dfs farm
+// Cluster struct is to hold cluster details in dos farm
 type Cluster struct {
 	Id           string       `json:"clusterId"`
 	Size         uint64       `json:"size"`

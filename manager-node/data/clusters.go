@@ -6,8 +6,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 	"github.com/freakmaxi/locking-center-client-go/mutex"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -46,12 +46,12 @@ type clusters struct {
 }
 
 func NewClusters(conn *Connection, database string, mutex mutex.LockingCenter) (Clusters, error) {
-	dfsCol := conn.client.Database(database).Collection(clusterCollection)
+	dosCol := conn.client.Database(database).Collection(clusterCollection)
 
 	c := &clusters{
 		mutex: mutex,
 		conn:  conn,
-		col:   dfsCol,
+		col:   dosCol,
 	}
 	if err := c.setupIndices(); err != nil {
 		return nil, err

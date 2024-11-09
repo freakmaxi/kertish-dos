@@ -7,12 +7,12 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 	"go.uber.org/zap"
 )
 
-func (d *dfsRouter) handlePut(w http.ResponseWriter, r *http.Request) {
+func (d *dosRouter) handlePut(w http.ResponseWriter, r *http.Request) {
 	requestedPaths, sourceAction, err := d.describeXPath(r.Header.Get("X-Path"))
 	if err != nil {
 		w.WriteHeader(422)
@@ -34,7 +34,7 @@ func (d *dfsRouter) handlePut(w http.ResponseWriter, r *http.Request) {
 		operation = "Move"
 	}
 
-	if err := d.dfs.Change(requestedPaths, targetPath, join, overwrite, strings.Compare(targetAction, "m") == 0); err != nil {
+	if err := d.dos.Change(requestedPaths, targetPath, join, overwrite, strings.Compare(targetAction, "m") == 0); err != nil {
 		if err == os.ErrNotExist {
 			w.WriteHeader(404)
 			return
@@ -68,7 +68,7 @@ func (d *dfsRouter) handlePut(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (d *dfsRouter) describeTarget(target string) (string, string, error) {
+func (d *dosRouter) describeTarget(target string) (string, string, error) {
 	commaIdx := strings.Index(target, ",")
 	if commaIdx == -1 {
 		return "", "", os.ErrInvalid

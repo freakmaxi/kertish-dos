@@ -4,8 +4,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
-	"github.com/freakmaxi/kertish-dfs/head-node/data"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/head-node/data"
 	"go.uber.org/zap"
 )
 
@@ -25,7 +25,7 @@ type Dfs interface {
 	ExecuteActions(aI *hooks.ActionInfo, actions []hooks.Action)
 }
 
-type dfs struct {
+type dos struct {
 	metadata data.Metadata
 	cluster  Cluster
 	logger   *zap.Logger
@@ -33,14 +33,14 @@ type dfs struct {
 
 // NewDfs creates the instance of file manipulation operations object for REST service request
 func NewDfs(metadata data.Metadata, cluster Cluster, logger *zap.Logger) Dfs {
-	return &dfs{
+	return &dos{
 		metadata: metadata,
 		cluster:  cluster,
 		logger:   logger,
 	}
 }
 
-func (d *dfs) ExecuteActions(aI *hooks.ActionInfo, actions []hooks.Action) {
+func (d *dos) ExecuteActions(aI *hooks.ActionInfo, actions []hooks.Action) {
 	if len(actions) == 0 || aI == nil {
 		return
 	}
@@ -59,7 +59,7 @@ func (d *dfs) ExecuteActions(aI *hooks.ActionInfo, actions []hooks.Action) {
 	}
 }
 
-func (d *dfs) compileHookActions(folderPath string, actionType hooks.RunOn) []hooks.Action {
+func (d *dos) compileHookActions(folderPath string, actionType hooks.RunOn) []hooks.Action {
 	actions := make([]hooks.Action, 0)
 	folders, err := d.metadata.ParentTree(folderPath, true, false)
 	if err != nil {
@@ -94,4 +94,4 @@ func (d *dfs) compileHookActions(folderPath string, actionType hooks.RunOn) []ho
 	return actions
 }
 
-var _ Dfs = &dfs{}
+var _ Dfs = &dos{}

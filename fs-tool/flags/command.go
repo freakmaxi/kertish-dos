@@ -5,8 +5,8 @@ import (
 	"os"
 	"path"
 
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
 )
 
 const local = "local:"
@@ -37,7 +37,7 @@ func NewCommand(version string, args []string) *Command {
 }
 
 func (c *Command) printUsageHeader() {
-	fmt.Printf("Kertish-dfs (v%s) usage: \n", c.version)
+	fmt.Printf("Kertish-dos (v%s) usage: \n", c.version)
 	fmt.Println()
 }
 

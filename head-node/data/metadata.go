@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 	"github.com/freakmaxi/locking-center-client-go/mutex"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -38,12 +38,12 @@ type metadata struct {
 }
 
 func NewMetadata(mutex mutex.LockingCenter, conn *Connection, database string) (Metadata, error) {
-	dfsCol := conn.client.Database(database).Collection(metadataCollection)
+	dosCol := conn.client.Database(database).Collection(metadataCollection)
 
 	m := &metadata{
 		mutex: mutex,
 		conn:  conn,
-		col:   dfsCol,
+		col:   dosCol,
 	}
 	if err := m.setupIndices(); err != nil {
 		return nil, err

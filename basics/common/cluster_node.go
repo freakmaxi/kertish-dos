@@ -4,7 +4,7 @@ import "time"
 
 const leadDuration = time.Minute * 5 // 5 minutes
 
-// Node struct is to hold the node details of the dfs cluster
+// Node struct is to hold the node details of the dos cluster
 type Node struct {
 	Id       string    `json:"nodeId"`
 	Address  string    `json:"address"`

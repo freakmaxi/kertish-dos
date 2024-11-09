@@ -5,11 +5,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 	"go.uber.org/zap"
 )
 
-func (d *dfsRouter) handlePost(w http.ResponseWriter, r *http.Request) {
+func (d *dosRouter) handlePost(w http.ResponseWriter, r *http.Request) {
 	applyTo := r.Header.Get("X-Apply-To")
 	requestedPaths, _, err := d.describeXPath(r.Header.Get("X-Path"))
 	if !d.validateApplyTo(applyTo) || err != nil || len(requestedPaths) > 1 {
@@ -19,7 +19,7 @@ func (d *dfsRouter) handlePost(w http.ResponseWriter, r *http.Request) {
 
 	switch applyTo {
 	case "folder":
-		if err := d.dfs.CreateFolder(requestedPaths[0]); err != nil {
+		if err := d.dos.CreateFolder(requestedPaths[0]); err != nil {
 			if err == os.ErrExist {
 				w.WriteHeader(409)
 				return
@@ -57,7 +57,7 @@ func (d *dfsRouter) handlePost(w http.ResponseWriter, r *http.Request) {
 		overwriteHeader := strings.ToLower(r.Header.Get("X-Overwrite"))
 		overwrite := len(overwriteHeader) > 0 && (strings.Compare(overwriteHeader, "1") == 0 || strings.Compare(overwriteHeader, "true") == 0)
 
-		if err := d.dfs.CreateFile(requestedPaths[0], contentType, uint64(contentLength), overwrite, r.Body); err != nil {
+		if err := d.dos.CreateFile(requestedPaths[0], contentType, uint64(contentLength), overwrite, r.Body); err != nil {
 			if err == os.ErrExist {
 				w.WriteHeader(409)
 				return

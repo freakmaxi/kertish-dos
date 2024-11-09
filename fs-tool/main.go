@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/freakmaxi/kertish-dfs/fs-tool/flags"
+	"github.com/freakmaxi/kertish-dos/fs-tool/flags"
 )
 
 var version = "XX.X.XXXX"

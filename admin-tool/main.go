@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/admin-tool/manager"
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/admin-tool/manager"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
 )
 
 var version = "XX.X.XXXX"
@@ -250,7 +250,7 @@ func main() {
 		fmt.Println("ok.")
 	case "repairConsistency":
 		fmt.Println("CAUTION: Repair consistency is a long running process that may take hours/days to complete " +
-			"depending on your DFS setup and will create partial action prevention on cluster data nodes.")
+			"depending on your DOS setup and will create partial action prevention on cluster data nodes.")
 		fmt.Print("Do you want to continue? (y/N) ")
 		reader := bufio.NewReader(os.Stdin)
 		char, _, err := reader.ReadRune()

@@ -3,7 +3,7 @@ package manager
 import (
 	"sync"
 
-	"github.com/freakmaxi/kertish-dfs/manager-node/data"
+	"github.com/freakmaxi/kertish-dos/manager-node/data"
 	"go.uber.org/zap"
 )
 

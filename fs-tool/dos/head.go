@@ -1,4 +1,4 @@
-package dfs
+package dos
 
 import (
 	"encoding/json"
@@ -12,10 +12,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/common"
 )
 
-const headEndPoint = "/client/dfs"
+const headEndPoint = "/client/dos"
 
 var client = http.Client{}
 
@@ -42,7 +42,7 @@ func List(headAddresses []string, source string, usage bool) (*common.Folder, er
 		return nil, fmt.Errorf("unable to list %s", source)
 	default:
 		if res.StatusCode != 200 {
-			return nil, fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+			return nil, fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 		}
 	}
 
@@ -78,7 +78,7 @@ func Tree(headAddresses []string, source string, usage bool) (*common.TreeShadow
 		return nil, fmt.Errorf("unable to list %s", source)
 	default:
 		if res.StatusCode != 200 {
-			return nil, fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+			return nil, fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 		}
 	}
 
@@ -114,7 +114,7 @@ func MakeFolder(headAddresses []string, target string) error {
 	case 202:
 		return nil
 	default:
-		return fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+		return fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 	}
 }
 
@@ -160,7 +160,7 @@ func Change(headAddresses []string, sources []string, target string, overwrite b
 	case 200:
 		return nil
 	default:
-		return fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+		return fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 	}
 }
 
@@ -199,7 +199,7 @@ func Delete(headAddresses []string, target string, killZombies bool) error {
 	case 200:
 		return nil
 	default:
-		return fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+		return fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 	}
 }
 
@@ -282,7 +282,7 @@ func PutFile(headAddresses []string, source string, target string, overwrite boo
 	case 202:
 		return nil
 	default:
-		return fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+		return fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 	}
 }
 
@@ -337,7 +337,7 @@ func Pull(headAddresses []string, sources []string, target string, readRange *co
 		if strings.Compare(res.Header.Get("X-Type"), "file") == 0 {
 			return fmt.Errorf("%s should be absolute path(s)", sourcesErrorString(sources))
 		}
-		return fmt.Errorf("combining dfs folder(s) to local folder is not possible")
+		return fmt.Errorf("combining dos folder(s) to local folder is not possible")
 	case 500:
 		return fmt.Errorf("unable to get %s", sourcesErrorString(sources))
 	case 503:
@@ -348,7 +348,7 @@ func Pull(headAddresses []string, sources []string, target string, readRange *co
 		return fmt.Errorf("%s is zombie or has zombie", sourcesErrorString(sources))
 	default:
 		if res.StatusCode != 200 && (readRange != nil && res.StatusCode != 206) {
-			return fmt.Errorf("dfs head returned with an unrecognisable status code: %d", res.StatusCode)
+			return fmt.Errorf("dos head returned with an unrecognisable status code: %d", res.StatusCode)
 		}
 	}
 

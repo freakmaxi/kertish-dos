@@ -4,12 +4,12 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
 )
 
-func (d *dfs) Change(sources []string, target string, join bool, overwrite bool, move bool) error {
+func (d *dos) Change(sources []string, target string, join bool, overwrite bool, move bool) error {
 	if len(sources) > 1 && !join {
 		return os.ErrInvalid
 	}
@@ -22,7 +22,7 @@ func (d *dfs) Change(sources []string, target string, join bool, overwrite bool,
 	return nil
 }
 
-func (d *dfs) changeFolder(sources []string, target string, move bool) error {
+func (d *dos) changeFolder(sources []string, target string, move bool) error {
 	sources = common.CorrectPaths(sources)
 	target = common.CorrectPath(target)
 
@@ -180,7 +180,7 @@ func (d *dfs) changeFolder(sources []string, target string, move bool) error {
 	})
 }
 
-func (d *dfs) changeFile(sources []string, target string, overwrite bool, move bool) error {
+func (d *dos) changeFile(sources []string, target string, overwrite bool, move bool) error {
 	targetParent, targetFilename := common.Split(target)
 
 	targetFolders, err := d.metadata.Get([]string{targetParent})

@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/common"
 	"github.com/mediocregopher/radix/v3"
 	"go.uber.org/zap"
 )

@@ -36,7 +36,7 @@ func NewLogger(service string) (*zap.Logger, bool) {
 			logTarget = "/var/log"
 		}
 
-		logPath := path.Join(logTarget, fmt.Sprintf("kertish-dfs-%s", service))
+		logPath := path.Join(logTarget, fmt.Sprintf("kertish-dos-%s", service))
 		if err := os.MkdirAll(logPath, 0777); err != nil {
 			fmt.Printf("ERROR: Unable to create logging path: %s", err.Error())
 			os.Exit(1)

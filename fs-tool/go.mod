@@ -1,9 +1,9 @@
-module github.com/freakmaxi/kertish-dfs/fs-tool
+module github.com/freakmaxi/kertish-dos/fs-tool
 
 go 1.17
 
 require (
-	github.com/freakmaxi/kertish-dfs/basics v0.0.0-00010101000000-000000000000
+	github.com/freakmaxi/kertish-dos/basics v0.0.0-00010101000000-000000000000
 	github.com/gdamore/tcell v1.4.0
 	github.com/google/uuid v1.2.0
 	github.com/mattn/go-runewidth v0.0.12
@@ -20,4 +20,4 @@ require (
 	golang.org/x/text v0.3.5 // indirect
 )
 
-replace github.com/freakmaxi/kertish-dfs/basics => ../basics
+replace github.com/freakmaxi/kertish-dos/basics => ../basics

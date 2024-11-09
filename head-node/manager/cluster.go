@@ -13,9 +13,9 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	cluster2 "github.com/freakmaxi/kertish-dfs/head-node/cluster"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	cluster2 "github.com/freakmaxi/kertish-dos/head-node/cluster"
 	"go.uber.org/zap"
 )
 

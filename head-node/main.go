@@ -5,12 +5,12 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
-	"github.com/freakmaxi/kertish-dfs/basics/logging"
-	"github.com/freakmaxi/kertish-dfs/head-node/data"
-	"github.com/freakmaxi/kertish-dfs/head-node/manager"
-	"github.com/freakmaxi/kertish-dfs/head-node/routing"
-	"github.com/freakmaxi/kertish-dfs/head-node/services"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/basics/logging"
+	"github.com/freakmaxi/kertish-dos/head-node/data"
+	"github.com/freakmaxi/kertish-dos/head-node/manager"
+	"github.com/freakmaxi/kertish-dos/head-node/routing"
+	"github.com/freakmaxi/kertish-dos/head-node/services"
 	"github.com/freakmaxi/locking-center-client-go/mutex"
 	"go.uber.org/zap"
 )
@@ -61,7 +61,7 @@ func main() {
 
 	mongoDb := os.Getenv("MONGO_DATABASE")
 	if len(mongoDb) == 0 {
-		mongoDb = "kertish-dfs"
+		mongoDb = "kertish-dos"
 	}
 	logger.Info(fmt.Sprintf("MONGO_DATABASE: %s", mongoDb))
 
@@ -99,19 +99,19 @@ func main() {
 		logger.Error("Cluster Manager is failed", zap.Error(err))
 		os.Exit(20)
 	}
-	dfs := manager.NewDfs(metadata, cluster, logger)
+	dos := manager.NewDfs(metadata, cluster, logger)
 	// create root if not exists
-	if err := dfs.CreateFolder("/"); err != nil && err != os.ErrExist {
+	if err := dos.CreateFolder("/"); err != nil && err != os.ErrExist {
 		logger.Error("Unable to create cluster root path", zap.Error(err))
 		os.Exit(21)
 	}
-	dfsRouter := routing.NewDfsRouter(dfs, logger)
+	dosRouter := routing.NewDfsRouter(dos, logger)
 
 	hook := manager.NewHook(metadata, logger)
 	hookRouter := routing.NewHookRouter(hook, logger)
 
 	routerManager := routing.NewManager()
-	routerManager.Add(dfsRouter)
+	routerManager.Add(dosRouter)
 	routerManager.Add(hookRouter)
 
 	proxy := services.NewProxy(bindAddr, routerManager, logger)
@@ -122,8 +122,8 @@ func main() {
 
 func printWelcome(console bool) {
 	if !console {
-		fmt.Printf("Kertish DFS, version %s\n", version)
-		fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dfs\n")
+		fmt.Printf("Kertish DOS, version %s\n", version)
+		fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dos\n")
 		return
 	}
 
@@ -144,6 +144,6 @@ func printWelcome(console bool) {
 	fmt.Println("              \\\\O@@@@@@@@@@@@@@@@@@@@@O/`")
 	fmt.Println("                 `\\\\|O@@@@@@@@@0oo/:")
 	fmt.Println()
-	fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dfs\n")
+	fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dos\n")
 	fmt.Println()
 }

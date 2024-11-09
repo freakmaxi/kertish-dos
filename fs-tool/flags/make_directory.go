@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
-	"github.com/freakmaxi/kertish-dfs/fs-tool/dfs"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/fs-tool/dos"
 )
 
 type makeDirectoryCommand struct {
@@ -68,7 +68,7 @@ func (m *makeDirectoryCommand) Execute() error {
 	anim := common.NewAnimation(m.output, "processing...")
 	anim.Start()
 
-	if err := dfs.MakeFolder(m.headAddresses, m.target); err != nil {
+	if err := dos.MakeFolder(m.headAddresses, m.target); err != nil {
 		anim.Cancel()
 		return err
 	}

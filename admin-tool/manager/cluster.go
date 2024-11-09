@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/common"
 )
 
 const managerEndPoint = "/client/manager"
@@ -34,7 +34,7 @@ func CreateCluster(managerAddr []string, addresses []string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -75,7 +75,7 @@ func DeleteCluster(managerAddr []string, clusterId string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -109,7 +109,7 @@ func MoveCluster(managerAddr []string, clusterIds []string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -141,7 +141,7 @@ func BalanceClusters(managerAddr []string, clusterIds []string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -169,7 +169,7 @@ func AddNode(managerAddr []string, clusterId string, addresses []string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -210,7 +210,7 @@ func RemoveNode(managerAddr []string, nodeId string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -251,7 +251,7 @@ func ChangeState(managerAddr []string, clusterIds []string, state common.States)
 				return fmt.Errorf("")
 			}
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -294,7 +294,7 @@ func CreateSnapshot(managerAddr []string, clusterId string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -326,7 +326,7 @@ func DeleteSnapshot(managerAddr []string, clusterId string, snapshotIndex uint64
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -358,7 +358,7 @@ func RestoreSnapshot(managerAddr []string, clusterId string, snapshotIndex uint6
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -386,7 +386,7 @@ func SyncClusters(managerAddr []string, clusterId string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -414,7 +414,7 @@ func RepairConsistency(managerAddr []string, repairModel string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -442,7 +442,7 @@ func GetClusters(managerAddr []string, clusterId string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}
@@ -526,7 +526,7 @@ func GetReport(managerAddr []string) error {
 		var e common.Error
 		if err := json.NewDecoder(res.Body).Decode(&e); err != nil {
 			if _, ok := err.(*json.SyntaxError); ok {
-				return fmt.Errorf("dfs manager returned with an unrecognisable status code: %d", res.StatusCode)
+				return fmt.Errorf("dos manager returned with an unrecognisable status code: %d", res.StatusCode)
 			}
 			return err
 		}

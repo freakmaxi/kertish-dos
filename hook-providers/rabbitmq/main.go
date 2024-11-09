@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
 	"github.com/streadway/amqp"
 )
 

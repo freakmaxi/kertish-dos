@@ -1,7 +1,7 @@
-# Kertish DFS File Storage Tool
+# Kertish DOS File Storage Tool
 
 ```
-Kertish-dfs (vXX.X.XXXX) usage: 
+Kertish-dos (vXX.X.XXXX) usage: 
 
    krtfs [options] command [arguments] parameters
 
@@ -26,7 +26,7 @@ commands:
      (  / )(  __)(  _ \(_  _)(  )/ ___)/ )( \     (    \(  __)/ ___)                                                                   
       )  (  ) _)  )   /  )(   )( \___ \) __ (      ) D ( ) _) \___ \                                                                   
      (__\_)(____)(__\_) (__) (__)(____/\_)(_/     (____/(__)  (____/                                                                   
-File Storage Shell vXX.X.XXXX, Visit: https://github.com/freakmaxi/kertish-dfs                                                           
+File Storage Shell vXX.X.XXXX, Visit: https://github.com/freakmaxi/kertish-dos                                                           
 processing... ok.                                                                                                                      
                                                                                                                                        
 (/)                                                                                                                                    

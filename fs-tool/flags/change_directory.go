@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
-	"github.com/freakmaxi/kertish-dfs/fs-tool/dfs"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/fs-tool/dos"
 )
 
 type changeDirectoryCommand struct {
@@ -46,13 +46,13 @@ func (c *changeDirectoryCommand) Name() string {
 
 func (c *changeDirectoryCommand) Execute() error {
 	if strings.Index(c.target, local) == 0 {
-		return fmt.Errorf("cd works only for dfs folder(s)")
+		return fmt.Errorf("cd works only for dos folder(s)")
 	}
 
 	anim := common.NewAnimation(c.output, "processing...")
 	anim.Start()
 
-	folder, err := dfs.List(c.headAddresses, c.target, false)
+	folder, err := dos.List(c.headAddresses, c.target, false)
 	if err != nil {
 		anim.Cancel()
 		return err

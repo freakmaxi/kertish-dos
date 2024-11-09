@@ -3,7 +3,7 @@ package routing
 import (
 	"net/http"
 
-	"github.com/freakmaxi/kertish-dfs/manager-node/manager"
+	"github.com/freakmaxi/kertish-dos/manager-node/manager"
 	"go.uber.org/zap"
 )
 

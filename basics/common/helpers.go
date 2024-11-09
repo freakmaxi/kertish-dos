@@ -15,7 +15,7 @@ func EmptyChecksum() string {
 	return hex.EncodeToString(sha512.New512_256().Sum(nil))
 }
 
-// CorrectPaths fix multiple paths to the correct format base on dfs requirement
+// CorrectPaths fix multiple paths to the correct format base on dos requirement
 func CorrectPaths(paths []string) []string {
 	for i := range paths {
 		folderPath := paths[i]
@@ -34,7 +34,7 @@ func CorrectPaths(paths []string) []string {
 	return paths
 }
 
-// CorrectPath fixes the path to the correct format base on dfs requirement
+// CorrectPath fixes the path to the correct format base on dos requirement
 func CorrectPath(folderPath string) string {
 	return CorrectPaths([]string{folderPath})[0]
 }
@@ -63,7 +63,7 @@ func PathTree(rootPath *string, folderPath string) []string {
 	return folderTree
 }
 
-// Split just splits the path to parent path and path name in the way of dfs required
+// Split just splits the path to parent path and path name in the way of dos required
 func Split(path string) (string, string) {
 	path = CorrectPath(path)
 	if strings.Compare(path, pathSeparator) == 0 {
@@ -115,7 +115,7 @@ func Absolute(basePath string, folderPath string) string {
 	return basePath
 }
 
-// ValidatePath checks if the path is a valid path for dfs
+// ValidatePath checks if the path is a valid path for dos
 func ValidatePath(folderPath string) bool {
 	return strings.Index(folderPath, pathSeparator) == 0
 }

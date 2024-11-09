@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
 	"github.com/gdamore/tcell"
 	"github.com/mattn/go-runewidth"
 )
@@ -114,7 +114,7 @@ func (s *shellCommand) printWelcome() {
 	s.output.Println("     (  / )(  __)(  _ \\(_  _)(  )/ ___)/ )( \\     (    \\(  __)/ ___)")
 	s.output.Println("      )  (  ) _)  )   /  )(   )( \\___ \\) __ (      ) D ( ) _) \\___ \\")
 	s.output.Println("     (__\\_)(____)(__\\_) (__) (__)(____/\\_)(_/     (____/(__)  (____/")
-	s.output.Printf("File Storage Shell v%s, Visit: https://github.com/freakmaxi/kertish-dfs\n", s.version)
+	s.output.Printf("File Storage Shell v%s, Visit: https://github.com/freakmaxi/kertish-dos\n", s.version)
 	s.output.Refresh()
 }
 
@@ -132,7 +132,7 @@ func (s *shellCommand) Execute() error {
 	s.activeFolder =
 		s.queryFolder(rootPath)
 	if s.activeFolder == nil {
-		return fmt.Errorf("communication error with dfs head")
+		return fmt.Errorf("communication error with dos head")
 	}
 	s.readyLine()
 
@@ -381,7 +381,7 @@ func (s *shellCommand) parse(args []string) (bool, bool, Execution) {
 		target := cdArgs[0]
 
 		if strings.Index(target, local) == 0 {
-			s.output.Println("cd command can only be used for dfs folders")
+			s.output.Println("cd command can only be used for dos folders")
 			return true, false, nil
 		}
 
@@ -479,7 +479,7 @@ func (s *shellCommand) rebuildActiveFolderAndCaches() {
 		s.queryFolder(p)
 	if s.activeFolder == nil {
 		if strings.Compare(p, rootPath) == 0 {
-			panic("communication error with dfs head")
+			panic("communication error with dos head")
 		}
 		s.rebuildActiveFolderAndCaches()
 	}

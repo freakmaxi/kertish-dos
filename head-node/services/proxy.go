@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/freakmaxi/kertish-dfs/head-node/routing"
+	"github.com/freakmaxi/kertish-dos/head-node/routing"
 	"go.uber.org/zap"
 )
 

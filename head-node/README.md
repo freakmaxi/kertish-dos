@@ -1,4 +1,4 @@
-# Kertish DFS Head Node (DFS)
+# Kertish DOS Head Node (DOS)
 
 Head node is responsible to handle file storage manipulation requests.
 Default bind endpoint port is `:4000`
@@ -10,7 +10,7 @@ Should be started with parameters that are set as environment variables
 ### Environment Variables
 - `BIND_ADDRESS` (optional) : Service binding address. Ex: `127.0.0.1:4000` Default: `:4000`
 
-Client will access the service using `http://127.0.0.1:4000/client/dfs`
+Client will access the service using `http://127.0.0.1:4000/client/dos`
 
 - `MANAGER_ADDRESS` (mandatory) : Manager Node accessing endpoint. Ex: `http://127.0.0.1:9400`
 
@@ -23,7 +23,7 @@ operations of file/folder placement.
 
 Metadata of the file storage will be kept in Mongo DB.
 
-- `MONGO_DATABASE` (optional) : Mongo DB name. Default: `kertish-dfs`
+- `MONGO_DATABASE` (optional) : Mongo DB name. Default: `kertish-dos`
 
 - `MONGO_TRANSACTION` (optional) : Set `true` if you have a Mongo DB Cluster setup 
 
@@ -36,7 +36,7 @@ Will be used to have the stability of metadata of the file storage
 - `GET` is used to get folders/files list and also file downloading.
 
 ##### Required Headers:
-- `X-Path` folder(s)/file(s) location in dfs. Possible formats are `[sourcePath]` or to join files 
+- `X-Path` folder(s)/file(s) location in dos. Possible formats are `[sourcePath]` or to join files 
 `j,[sourcePath],[sourcePath]...`. `sourcePath`(s) should be url encoded
 
 ##### Optional Headers:
@@ -159,7 +159,7 @@ Will be used to have the stability of metadata of the file storage
 
 ##### Required Headers:
 - `X-Apply-To` is the aim of operation. Values: `file` or `folder`
-- `X-Path` folder/file location in dfs (should be urlencoded)
+- `X-Path` folder/file location in dos (should be urlencoded)
 - `Content-Type` (only file)
 - `Content-Length` (only file)
 
@@ -183,7 +183,7 @@ Default: `false`
 - `PUT` is used to move/copy folders/files in file storage.
 
 ##### Required Headers:
-- `X-Path` source folder(s)/file(s) location in dfs. Possible formats are `[sourcePath]` or for file/folder joining
+- `X-Path` source folder(s)/file(s) location in dos. Possible formats are `[sourcePath]` or for file/folder joining
 `j,[sourcePath],[sourcePath]...`. `sourcePath`(s) should be url encoded
 - `X-Target` action and target of folder/file. it is formatted header, the value must be `[action],[targetPath]` and
 `targetPath` should be url encoded. 
@@ -206,7 +206,7 @@ Default: `false`
 **CAUTION: Deletion operation is applied immediately**
 
 ##### Required Headers:
-- `X-Path` source folder/file location in dfs (should be urlencoded)
+- `X-Path` source folder/file location in dos (should be urlencoded)
 - `X-Kill-Zombies` force zombie file/folder to be removed. Values: `1` or `true`. Default: `false`
 
 ##### Possible Status Codes
@@ -220,11 +220,11 @@ Default: `false`
 - `526`: Require consistency repair
 - `200`: Successful
 
-# Kertish DFS Head Node (HOOKS)
+# Kertish DOS Head Node (HOOKS)
 
 Hooks can be considered as watchers for the specific folder. They are executed on some
-certain conditions. Kertish DFS supports custom made hook providers. You can find more
-information under - [hook-providers](https://github.com/freakmaxi/kertish-dfs/tree/master/hook-providers) path.
+certain conditions. Kertish DOS supports custom made hook providers. You can find more
+information under - [hook-providers](https://github.com/freakmaxi/kertish-dos/tree/master/hook-providers) path.
 
 The management of the hook registration is handled by the head node.
 
@@ -249,7 +249,7 @@ The management of the hook registration is handled by the head node.
 - `POST` is used to register a hook to a folder or folders.
 
 ##### Required Headers:
-- `X-Path` folder(s) location in dfs. Possible formats are `[folderPath]` or for multiple folders
+- `X-Path` folder(s) location in dos. Possible formats are `[folderPath]` or for multiple folders
   `[folderPath],[folderPath]...`. `folderPath`(s) should be url encoded
 
 ##### Body
@@ -287,10 +287,10 @@ hook, you should make this call with the new hook setup body.
 Each provider has its own setup procedure before to take action. (`sample` field in available providers list)
   
 ##### Important Note
-Hooks are executed in a sync manner. That means it will be executed after the dfs operation and
+Hooks are executed in a sync manner. That means it will be executed after the dos operation and
 will wait until the hook finishes the execution. If you are adding hooks which do not have any
 lazy execution implementation this will slow down the file operation and decrease the performance
-of the DFS.
+of the DOS.
 
 You can add a hook to a parent and children. If there will be more than one hook in the chain to
 execute in the folder tree, this will be done from the children hooks to parent hooks direction.
@@ -317,7 +317,7 @@ multiple values in the array. There will always be a single value.
 - `DELETE` is used to delete/unregister hook(s) from the folder.
 
 ##### Required Headers:
-- `X-Path` folder location in dfs (should be urlencoded)
+- `X-Path` folder location in dos (should be urlencoded)
 
 ##### Body
 - `HookId Array`

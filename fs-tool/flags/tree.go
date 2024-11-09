@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/terminal"
-	"github.com/freakmaxi/kertish-dfs/fs-tool/dfs"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/terminal"
+	"github.com/freakmaxi/kertish-dos/fs-tool/dos"
 )
 
 type treeCommand struct {
@@ -111,7 +111,7 @@ func (t *treeCommand) Execute() error {
 	anim := common.NewAnimation(t.output, "processing...")
 	anim.Start()
 
-	tree, err := dfs.Tree(t.headAddresses, t.source, t.usage)
+	tree, err := dos.Tree(t.headAddresses, t.source, t.usage)
 	if err != nil {
 		anim.Cancel()
 		return err

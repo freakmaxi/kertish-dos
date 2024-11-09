@@ -2,7 +2,7 @@ package common
 
 import "strings"
 
-// SyncFileItem struct is to hold and export/serialize the file creation/deletion/sync operation across the dfs farm
+// SyncFileItem struct is to hold and export/serialize the file creation/deletion/sync operation across the dos farm
 type SyncFileItem struct {
 	Sha512Hex string `json:"sha512Hex"`
 	Usage     uint16 `json:"usage"`

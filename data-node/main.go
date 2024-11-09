@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/logging"
-	"github.com/freakmaxi/kertish-dfs/data-node/cache"
-	"github.com/freakmaxi/kertish-dfs/data-node/filesystem"
-	"github.com/freakmaxi/kertish-dfs/data-node/manager"
-	"github.com/freakmaxi/kertish-dfs/data-node/service"
+	"github.com/freakmaxi/kertish-dos/basics/logging"
+	"github.com/freakmaxi/kertish-dos/data-node/cache"
+	"github.com/freakmaxi/kertish-dos/data-node/filesystem"
+	"github.com/freakmaxi/kertish-dos/data-node/manager"
+	"github.com/freakmaxi/kertish-dos/data-node/service"
 	"go.uber.org/zap"
 )
 
@@ -187,8 +187,8 @@ func findHardwareAddress() (string, error) {
 
 func printWelcome(console bool) {
 	if !console {
-		fmt.Printf("Kertish DFS, version %s\n", version)
-		fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dfs\n")
+		fmt.Printf("Kertish DOS, version %s\n", version)
+		fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dos\n")
 		return
 	}
 
@@ -209,6 +209,6 @@ func printWelcome(console bool) {
 	fmt.Println("              \\\\O@@@@@@@@@@@@@@@@@@@@@O/`")
 	fmt.Println("                 `\\\\|O@@@@@@@@@0oo/:")
 	fmt.Println()
-	fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dfs\n")
+	fmt.Printf("Visit: https://github.com/freakmaxi/kertish-dos\n")
 	fmt.Println()
 }

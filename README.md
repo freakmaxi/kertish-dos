@@ -1,11 +1,11 @@
-# Kertish-DFS
+# Kertish-DOS
 ---
-[![Build Status](https://travis-ci.org/freakmaxi/kertish-dfs.svg?branch=master)](https://travis-ci.org/freakmaxi/kertish-dfs)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/freakmaxi/kertish-dfs.svg)
-[![Docker Pulls](https://img.shields.io/docker/pulls/freakmaxi/kertish-dfs.svg?maxAge=604800)](https://hub.docker.com/r/freakmaxi/kertish-dfs/)
-[![Go Report Card](https://goreportcard.com/badge/github.com/freakmaxi/kertish-dfs)](https://goreportcard.com/report/github.com/freakmaxi/kertish-dfs)
+[![Build Status](https://travis-ci.org/freakmaxi/kertish-dos.svg?branch=master)](https://travis-ci.org/freakmaxi/kertish-dos)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/freakmaxi/kertish-dos.svg)
+[![Docker Pulls](https://img.shields.io/docker/pulls/freakmaxi/kertish-dos.svg?maxAge=604800)](https://hub.docker.com/r/freakmaxi/kertish-dos/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/freakmaxi/kertish-dos)](https://goreportcard.com/report/github.com/freakmaxi/kertish-dos)
 
-<img src="http://imfrk.com/p/kertish-dfs/logo-point.png" width="200px">
+<img src="http://imfrk.com/p/kertish-dos/logo-point.png" width="200px">
 
 # Table of Contents
 - [Introduction](#introduction)
@@ -27,12 +27,12 @@
 
 ---
 ## Introduction
-Kertish-dfs is a simple and highly scalable distributed file storage to store and serve billions of files. It is
+Kertish-dos is a simple and highly scalable distributed object storage to store and serve billions of files. It is
 developed to cover the expectation for mass file storage requirements in isolated networks.
 **It does not have security implementation.**
 
 #### What is it for?
-Kertish-dfs is developed to cover the traditional file storage requirements in a scalable way. Software will use the same
+Kertish-dos is developed to cover the traditional file storage requirements in a scalable way. Software will use the same
 path-tree structure virtually to keep the files but will not stuck in hard-drive limits of the machine. It is possible
 to create a fail-safe, highly available fast and scalable file storage.
 
@@ -41,23 +41,23 @@ Systems where they need huge storage space requirements to keep all the files lo
 common cloud storage for micro services, video storage for a streaming services, and the like...
 
 #### How shouldn't be used?
-Kertish-dfs does not have any security implementation. For this reason, it is best to use it in a publicly isolated
+Kertish-dos does not have any security implementation. For this reason, it is best to use it in a publicly isolated
 network. Also it does not have file/folder permission integration, so user base limitations are also not available.
 
 #### How is the best usage?
-Kertish-dfs is suitable to use as a back service of front services. It means, it is better not to allow users directly 
+Kertish-dos is suitable to use as a back service of front services. It means, it is better not to allow users directly 
 to the file manipulation.
 
 ## Architecture
-Kertish-dfs has 3 vital parts for a working farm. Manager-Node, Head-Node, Data-Node.
+Kertish-dos has 3 vital parts for a working farm. Manager-Node, Head-Node, Data-Node.
 - Manager-Node is responsible to handle data-node synchronisation and harmony for each cluster. It is handling the
 space reservation, indexing data-node contents for fast search and find operations, health tracking of each data-node
 and optimize for the best performance every second, cluster balancing, check/repair/fix operations and synchronisation.
 - Head-Node(s) are responsible to handle read, write, delete, copy, move and merge operations. So, when you want to put
-a file to Kertish-dfs, you will push the file to this node and it will handle the rest.
+a file to Kertish-dos, you will push the file to this node and it will handle the rest.
 - Data-Node(s) are responsible to hold the file chunks and serve it when it is requested as fast as possible.
 
-Manager-Node and Data-Node must not accept direct request(s) coming from the outside of the Kertish-dfs farm. For 
+Manager-Node and Data-Node must not accept direct request(s) coming from the outside of the Kertish-dos farm. For 
 file/folder manipulation, only the access point should be Head-Node.
 
 **Here is a sample scenario;**
@@ -71,7 +71,7 @@ map reservation if it has successful placement or discard the reservation to sav
 7. User can hold the file location in a database (/Foo/Bar/demo.mov)
 
 ## Terminology
-- Farm: Whole Kertish-dfs with multi clusters. A farm can have one or more clusters with different sizes.
+- Farm: Whole Kertish-dos with multi clusters. A farm can have one or more clusters with different sizes.
 - Cluster: A group of servers to hold data. A cluster can have one or more data node. 
 - Data Node: A service running in a cluster to handle data manipulation requests. 
 - Master: The server that has the latest version of the data blocks
@@ -79,7 +79,7 @@ map reservation if it has successful placement or discard the reservation to sav
 - Data Block: Data particle of the big data. Max size is 32mb. 
 
 #### Summary
-Kertish-dfs allows you to create data farm in distributed locations. Every data farm consist of clusters. Clusters
+Kertish-dos allows you to create data farm in distributed locations. Every data farm consist of clusters. Clusters
 are data banks. Every cluster has one or more data node. Always one data node works as master. Every data node
 additions to that cluster will be used as backup of the master.
 
@@ -92,7 +92,7 @@ to the cluster will help you to increase the response time.
 - Data shadowing. Copy operation won't increase the usage but let you the file/folder logically placed
 - Data particle stacking. Same data block won't be duplicated so theoretically total physical size may smaller than 
 the real size   
-- Fast traditional move/copy operations. It can take up to 5 seconds to move/copy a 1tb sized file in the dfs. 
+- Fast traditional move/copy operations. It can take up to 5 seconds to move/copy a 1tb sized file in the dos. 
 - Multi tasking. Different request can work on the same folder.
 - Automated sync. Data nodes are smart enough to sync the data in the cluster.
 - Possible to take "snapshot" for marking the state of data-node and revert that moment if it requires.
@@ -101,7 +101,7 @@ the real size
 
 ## System Requirements
 
-Kertish-dfs nodes has different hardware requirements to work flawless.
+Kertish-dos nodes has different hardware requirements to work flawless.
 
 - **Manager-Node** has redis, mongodb and locking-center TCP connections. In addition to that, it serves REST end-points
 for head-node and data-node for management feedback requests. For these purposes, a powerful network connection is a
@@ -115,10 +115,10 @@ one instance. I'm working to make it scalable.**
 
 - **Head-Node** has mongodb and locking-center TCP connections. Also, it serves REST end-points for file storage
 manipulations. It means, it is a good idea to have 200mbit or powerful network connection. Head-Node will cache the
-uploaded file to process. So, if you are uploading raw 32GB file to the Kertish-dfs, you should have a powerful
+uploaded file to process. So, if you are uploading raw 32GB file to the Kertish-dos, you should have a powerful
 memory and swap space to hold the whole file in the memory. For this reason, you should have a powerful SSD Disk with a 
 huge swap space configured. **NOTE this logic will be extended in the future releases and will able to cover real-time
-uploading without caching.** If you are configuring the Kertish-dfs farm to serve just small files between 1kb to 2GB,
+uploading without caching.** If you are configuring the Kertish-dos farm to serve just small files between 1kb to 2GB,
 4GB ram with 8GB swap space will be more than enough to cover expectations. On read wise, Head-Node does not cache
 anything, it transfers the data from the data-node to client. So memory is essential just for file uploads. Remember
 that, Head-Node is scalable and you can put as much as Head-Node for file manipulation behind the load balancer. CPU is
@@ -138,7 +138,7 @@ can raise. So if you provide fast and more CPU core(s), synchronisation will fin
 
 ## Setup Description
 
-Kertish-dfs farm consist of minimum
+Kertish-dos farm consist of minimum
 - 1 Manager Node
 - 1 Head Node
 - 1 Data Node
@@ -181,23 +181,23 @@ sites.
 
 ### Setup Using Docker
 
-The docker hub page is [https://hub.docker.com/r/freakmaxi/kertish-dfs]
+The docker hub page is [https://hub.docker.com/r/freakmaxi/kertish-dos]
 
-You can use the sample docker-compose file to kickstart the Kertish-dfs farm in docker container with 6 Data-Nodes 
+You can use the sample docker-compose file to kickstart the Kertish-dos farm in docker container with 6 Data-Nodes 
 working in 3 Clusters as Master/Slave
 
-[https://github.com/freakmaxi/kertish-dfs/blob/master/docker-compose.yml]
+[https://github.com/freakmaxi/kertish-dos/blob/master/docker-compose.yml]
 
 `docker-compose up` will make everything ready for you.
 
-Download setup script from [https://github.com/freakmaxi/kertish-dfs/blob/master/kertish-docker-setup.sh]
+Download setup script from [https://github.com/freakmaxi/kertish-dos/blob/master/kertish-docker-setup.sh]
 
-- Download Client-Tools for Kertish-dfs from [https://github.com/freakmaxi/kertish-dfs/releases] according to your OS
+- Download Client-Tools for Kertish-dos from [https://github.com/freakmaxi/kertish-dos/releases] according to your OS
 - Give execution permission to the file `sudo chmod +x kertish-docker-setup`
 - Execute setup script.
 - type `y` and press `enter`
 
-Your Kertish-dfs farm is ready to go.
+Your Kertish-dos farm is ready to go.
 
 Put any file using `krtfs` file storage tool. Ex:
 
@@ -220,12 +220,12 @@ total 1
 
 #### Preparation
 
-- Download the latest release of Kertish-dfs or compile it using the `create_release.sh` shell script file located under
+- Download the latest release of Kertish-dos or compile it using the `create_release.sh` shell script file located under
 the `-build-` folder.
 
 ##### Setting Up Manager Node
 
-You can take a look at [Manager-Node](https://github.com/freakmaxi/kertish-dfs/blob/master/manager-node) page to understand how it is working
+You can take a look at [Manager-Node](https://github.com/freakmaxi/kertish-dos/blob/master/manager-node) page to understand how it is working
 
 - Copy `kertish-manager` executable to `/usr/local/bin` folder on the system.
 - Give execution permission to the file `sudo chmod +x /usr/local/bin/kertish-manager`
@@ -243,7 +243,7 @@ export LOCKING_CENTER="127.0.0.1:22119"                 # Modify the values acco
 ---
 ##### Setting Up Head Node
 
-You can take a look at [Head-Node](https://github.com/freakmaxi/kertish-dfs/blob/master/head-node) page to understand how it is working
+You can take a look at [Head-Node](https://github.com/freakmaxi/kertish-dos/blob/master/head-node) page to understand how it is working
 
 - Copy `kertish-head` executable to `/usr/local/bin` folder on the system.
 - Give execution permission to the file `sudo chmod +x /usr/local/bin/kertish-head`
@@ -261,7 +261,7 @@ export LOCKING_CENTER="127.0.0.1:22119"                 # Modify the values acco
 ---
 ##### Setting Up Data Node(s)
 
-You can take a look at [Data-Node](https://github.com/freakmaxi/kertish-dfs/blob/master/data-node) page to understand how it is working
+You can take a look at [Data-Node](https://github.com/freakmaxi/kertish-dos/blob/master/data-node) page to understand how it is working
 
 - Copy `kertish-data` executable to `/usr/local/bin` folder on the system.
 - Give execution permission to the file `sudo chmod +x /usr/local/bin/kertish-data`
@@ -365,7 +365,7 @@ output:
 processing... ok.
 total 0
 ```
-- Put a file from your local drive to dfs
+- Put a file from your local drive to dos
 `krtfs cp local:/usr/local/bin/krtfs /krtfs`
 output: 
 ```
@@ -380,7 +380,7 @@ total 1
 -  7291kb 2020 Jan 13 05:30 krtfs
 ```
 
-If you get the same or similar outputs like here, congratulations! you successfully set up your Kertish-dfs. 
+If you get the same or similar outputs like here, congratulations! you successfully set up your Kertish-dos. 
 
 ### One Last Important Note
 

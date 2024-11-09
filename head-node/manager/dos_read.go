@@ -4,11 +4,11 @@ import (
 	"io"
 	"os"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
 )
 
-func (d *dfs) Read(paths []string, join bool) (ReadContainer, error) {
+func (d *dos) Read(paths []string, join bool) (ReadContainer, error) {
 	if len(paths) == 1 && join || len(paths) > 1 && !join {
 		return nil, os.ErrInvalid
 	}
@@ -32,7 +32,7 @@ func (d *dfs) Read(paths []string, join bool) (ReadContainer, error) {
 	return newReadContainerForFile(file, streamHandler), nil
 }
 
-func (d *dfs) folder(folderPath string) (*common.Folder, error) {
+func (d *dos) folder(folderPath string) (*common.Folder, error) {
 	folderPath = common.CorrectPath(folderPath)
 
 	folders, err := d.metadata.Get([]string{folderPath})
@@ -42,7 +42,7 @@ func (d *dfs) folder(folderPath string) (*common.Folder, error) {
 	return folders[0], nil
 }
 
-func (d *dfs) tree(folderPath string) (*common.Tree, error) {
+func (d *dos) tree(folderPath string) (*common.Tree, error) {
 	folderPath = common.CorrectPath(folderPath)
 
 	folders, err := d.metadata.ChildrenTree(folderPath, true, false)
@@ -57,7 +57,7 @@ func (d *dfs) tree(folderPath string) (*common.Tree, error) {
 	return tree, nil
 }
 
-func (d *dfs) file(paths []string) (*common.File, func(w io.Writer, begins int64, ends int64) error, error) {
+func (d *dos) file(paths []string) (*common.File, func(w io.Writer, begins int64, ends int64) error, error) {
 	files := make(common.Files, 0)
 	for _, path := range paths {
 		folderPath, filename := common.Split(path)
@@ -103,7 +103,7 @@ func (d *dfs) file(paths []string) (*common.File, func(w io.Writer, begins int64
 	return requestedFile, streamHandler, nil
 }
 
-func (d *dfs) Size(folderPath string) (uint64, error) {
+func (d *dos) Size(folderPath string) (uint64, error) {
 	folderPath = common.CorrectPath(folderPath)
 
 	folders, err := d.metadata.ChildrenTree(folderPath, true, false)

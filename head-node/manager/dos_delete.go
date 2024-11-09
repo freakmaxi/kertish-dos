@@ -4,12 +4,12 @@ import (
 	"os"
 	"strings"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/basics/errors"
-	"github.com/freakmaxi/kertish-dfs/basics/hooks"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/basics/errors"
+	"github.com/freakmaxi/kertish-dos/basics/hooks"
 )
 
-func (d *dfs) Delete(target string, killZombies bool) error {
+func (d *dos) Delete(target string, killZombies bool) error {
 	if err := d.deleteFolder(target, killZombies); err != nil {
 		if err != os.ErrNotExist {
 			return err
@@ -19,7 +19,7 @@ func (d *dfs) Delete(target string, killZombies bool) error {
 	return nil
 }
 
-func (d *dfs) deleteFolder(folderPath string, killZombies bool) error {
+func (d *dos) deleteFolder(folderPath string, killZombies bool) error {
 	parentPath, pathName := common.Split(folderPath)
 
 	return d.metadata.SaveBlock([]string{parentPath}, func(folders map[string]*common.Folder) (bool, error) {
@@ -34,7 +34,7 @@ func (d *dfs) deleteFolder(folderPath string, killZombies bool) error {
 	})
 }
 
-func (d *dfs) deleteFolderContent(fullPath string, killZombies bool, foldersCache map[string]*common.Folder) error {
+func (d *dos) deleteFolderContent(fullPath string, killZombies bool, foldersCache map[string]*common.Folder) error {
 	deletingFolders, err := d.metadata.ChildrenTree(fullPath, true, true)
 	if err != nil {
 		if err == os.ErrNotExist {
@@ -87,7 +87,7 @@ func (d *dfs) deleteFolderContent(fullPath string, killZombies bool, foldersCach
 	return nil
 }
 
-func (d *dfs) deleteFile(path string, killZombies bool) error {
+func (d *dos) deleteFile(path string, killZombies bool) error {
 	folderPath, filename := common.Split(path)
 
 	return d.metadata.SaveBlock([]string{folderPath}, func(folders map[string]*common.Folder) (bool, error) {
@@ -114,7 +114,7 @@ func (d *dfs) deleteFile(path string, killZombies bool) error {
 	})
 }
 
-func (d *dfs) deleteFileChunks(file *common.File, killZombies bool) error {
+func (d *dos) deleteFileChunks(file *common.File, killZombies bool) error {
 	deletionResult, err := d.cluster.Delete(file.Chunks)
 	if deletionResult != nil {
 		file.IngestDeletion(*deletionResult)

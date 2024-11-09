@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/freakmaxi/kertish-dfs/basics/common"
-	"github.com/freakmaxi/kertish-dfs/manager-node/data"
+	"github.com/freakmaxi/kertish-dos/basics/common"
+	"github.com/freakmaxi/kertish-dos/manager-node/data"
 	"go.uber.org/zap"
 )
 
