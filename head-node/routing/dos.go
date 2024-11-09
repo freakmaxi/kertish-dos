@@ -12,13 +12,13 @@ import (
 )
 
 type dosRouter struct {
-	dos    manager.Dfs
+	dos    manager.Dos
 	logger *zap.Logger
 
 	definitions []*Definition
 }
 
-func NewDfsRouter(dos manager.Dfs, logger *zap.Logger) Router {
+func NewDosRouter(dos manager.Dos, logger *zap.Logger) Router {
 	pR := &dosRouter{
 		dos:         dos,
 		logger:      logger,

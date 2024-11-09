@@ -99,13 +99,13 @@ func main() {
 		logger.Error("Cluster Manager is failed", zap.Error(err))
 		os.Exit(20)
 	}
-	dos := manager.NewDfs(metadata, cluster, logger)
+	dos := manager.NewDos(metadata, cluster, logger)
 	// create root if not exists
 	if err := dos.CreateFolder("/"); err != nil && err != os.ErrExist {
 		logger.Error("Unable to create cluster root path", zap.Error(err))
 		os.Exit(21)
 	}
-	dosRouter := routing.NewDfsRouter(dos, logger)
+	dosRouter := routing.NewDosRouter(dos, logger)
 
 	hook := manager.NewHook(metadata, logger)
 	hookRouter := routing.NewHookRouter(hook, logger)

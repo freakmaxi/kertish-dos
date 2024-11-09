@@ -9,8 +9,8 @@ import (
 	"go.uber.org/zap"
 )
 
-// Dfs interface is for file manipulation operations base on REST service request
-type Dfs interface {
+// Dos interface is for file manipulation operations base on REST service request
+type Dos interface {
 	CreateFolder(folderPath string) error
 	CreateFile(path string, mime string, size uint64, overwrite bool, contentReader io.Reader) error
 
@@ -31,8 +31,8 @@ type dos struct {
 	logger   *zap.Logger
 }
 
-// NewDfs creates the instance of file manipulation operations object for REST service request
-func NewDfs(metadata data.Metadata, cluster Cluster, logger *zap.Logger) Dfs {
+// NewDos creates the instance of file manipulation operations object for REST service request
+func NewDos(metadata data.Metadata, cluster Cluster, logger *zap.Logger) Dos {
 	return &dos{
 		metadata: metadata,
 		cluster:  cluster,
@@ -94,4 +94,4 @@ func (d *dos) compileHookActions(folderPath string, actionType hooks.RunOn) []ho
 	return actions
 }
 
-var _ Dfs = &dos{}
+var _ Dos = &dos{}

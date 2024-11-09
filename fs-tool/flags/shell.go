@@ -617,10 +617,10 @@ func (s *shellCommand) searchInFolder(basePath string, v string, local bool, cdR
 	if local {
 		return s.searchInLocalFolder(basePath, v, cdRequest)
 	}
-	return s.searchInDfsFolder(basePath, v, cdRequest)
+	return s.searchInDosFolder(basePath, v, cdRequest)
 }
 
-func (s *shellCommand) searchInDfsFolder(basePath string, v string, onlyFolders bool) (string, bool) {
+func (s *shellCommand) searchInDosFolder(basePath string, v string, onlyFolders bool) (string, bool) {
 	printSummaryFunc := func(matches [][]string) {
 		s.output.Println("")
 		for _, m := range matches {
